@@ -1,0 +1,26 @@
+
+
+
+
+
+<html>
+<head>
+    <title>senangPay Payment Form</title>
+</head>
+<?
+$hashed_string = md5($secretkey.urldecode({{ detail }}).urldecode({{ amount }}).urldecode({{ order_id }}));
+?>
+<a href="test"><img src="https://app.senangpay.my/public/img/pay.png"></a>
+
+<body onload="document.order.submit()">
+<form name="order" method="post" action="https://app.senangpay.my/payment/801164636806479">
+    <input type="hidden" name="detail" value="{{ detail }}">
+    <input type="hidden" name="amount" value="{{ amount }}">
+    <input type="hidden" name="order_id" value="{{ order_id }}">
+    <input type="hidden" name="name" value="{{ name }}">
+    <input type="hidden" name="email" value="{{ email }}">
+    <input type="hidden" name="phone" value="{{ phone }}">
+    <input type="hidden" name="hash" value="{{ hashed_string }}">
+</form>
+</body>
+</html>
